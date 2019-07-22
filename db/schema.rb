@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_07_22_015638) do
     t.string "musicname", comment: "楽曲名"
     t.string "artistname", comment: "アーティスト名"
     t.integer "difficult", comment: "難易度"
+    t.integer "level", comment: "レベル"
     t.integer "puc_count", comment: "PUC人数s"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
