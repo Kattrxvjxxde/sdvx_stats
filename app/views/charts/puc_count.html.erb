@@ -1,0 +1,32 @@
+<% content_for(:html_title) { "#{t('common.html_title')} | lv.#{@level}" } %>
+
+<div class="uk-container">
+  <div class="uk-section-xsmall">
+    <%= search_form_for @q, url: puc_count_charts_path do |f| %>
+      <%= f.radio_button :level_eq, '', {:checked => true} %>全曲
+      <% (1..20).each do |n| %>
+        <%= f.radio_button :level_eq, n %><%= "#{n}" %>
+      <% end %>
+
+      <%= f.submit "検索" %>
+    <% end %>
+
+    <table class="uk-table uk-table-small uk-table-divider">
+      <thead>
+        <tr>
+          <th><%= Chart.human_attribute_name(:musicname) %></th>
+          <th class="uk-width-small"><%= Chart.human_attribute_name(:puc_count) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @charts.each do |chart| %>
+          <tr>
+            <td><%= chart.musicname + " [#{chart.difficult}]" + " (#{chart.level})" %></td>
+            <td><%= chart.puc_count >= 100 ? 'over 100' : chart.puc_count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @charts %>
+  </div>
+</div>

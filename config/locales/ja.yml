@@ -1,6 +1,4 @@
 ja:
-  common:
-    title: PUC人数表
   date:
     formats:
       default: "%Y/%m/%d"
@@ -11,14 +9,3 @@ ja:
       default: "%Y/%m/%d %H:%M:%S"
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
-
-  activerecord:
-    models:
-      chart: 譜面
-    attributes:
-      chart:
-        musicname: 楽曲名
-        artistname: アーティスト名
-        difficult: 難易度
-        level: レベル
-        puc_count: PUC人数

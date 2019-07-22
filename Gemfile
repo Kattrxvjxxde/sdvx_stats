@@ -67,3 +67,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # custmize
 gem 'enumerize'
+gem 'kaminari'
+gem 'ransack'

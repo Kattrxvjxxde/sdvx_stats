@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      chart: 譜面
+    attributes:
+      chart:
+        musicname: 楽曲名
+        artistname: アーティスト名
+        difficult: 難易度
+        level: レベル
+        puc_count: PUC人数

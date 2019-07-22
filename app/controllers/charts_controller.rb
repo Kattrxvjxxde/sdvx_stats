@@ -1,7 +1,14 @@
 class ChartsController < ApplicationController
-  def index
+  PER_PAGE = 100
+
+  def puc_count
     @chart_update_master = ChartUpdateMaster.first
-    @level = 18
-    @charts = Chart.where(level: @level).order(puc_count: :desc)
+
+    @q = Chart.ransack(params[:q])
+    @charts = @q.result(distinct: true)
+                .order(puc_count: :desc)
+                .order(id: :asc)
+                .page(params[:page])
+                .per(PER_PAGE)
   end
 end
