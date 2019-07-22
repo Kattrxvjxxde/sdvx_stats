@@ -1,5 +1,5 @@
 class ChartsController < ApplicationController
-  PER_PAGE = 100
+  PER_PAGE = 100.freeze
 
   def puc_count
     @chart_update_master = ChartUpdateMaster.first

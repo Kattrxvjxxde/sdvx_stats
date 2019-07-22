@@ -2,14 +2,21 @@
 
 <div class="uk-container">
   <div class="uk-section-xsmall">
-    <%= search_form_for @q, url: puc_count_charts_path do |f| %>
-      <%= f.radio_button :level_eq, '', {:checked => true} %>全曲
+    <button class="uk-button uk-button-default" type="button">レベル選択</button>
+    <div class="uk-width-5-6" uk-dropdown="mode: click; boundary: .uk-container">
+      <%= link_to(
+        'ALL',
+        puc_count_charts_path,
+        class: 'uk-button uk-button-default'
+      ) %>
       <% (1..20).each do |n| %>
-        <%= f.radio_button :level_eq, n %><%= "#{n}" %>
+        <%= link_to(
+          n.to_s,
+          puc_count_charts_path(q: { level_eq: n }),
+          class: 'uk-button uk-button-default'
+        ) %>
       <% end %>
-
-      <%= f.submit "検索" %>
-    <% end %>
+    </div>
 
     <table class="uk-table uk-table-small uk-table-divider">
       <thead>
@@ -27,6 +34,6 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @charts %>
+    <%= paginate @charts, themes: 'uikit' %>
   </div>
 </div>
