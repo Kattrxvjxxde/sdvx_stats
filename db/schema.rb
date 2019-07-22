@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_21_162812) do
+ActiveRecord::Schema.define(version: 2019_07_22_015638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "chart_update_masters", force: :cascade do |t|
+    t.date "update_date", comment: "譜面更新バッチ実行日"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "charts", force: :cascade do |t|
+    t.string "musicname", comment: "楽曲名"
+    t.string "artistname", comment: "アーティスト名"
+    t.integer "difficult", comment: "難易度"
+    t.integer "level", comment: "レベル"
+    t.integer "puc_count", comment: "PUC人数s"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

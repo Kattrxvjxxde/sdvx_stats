@@ -1,0 +1,89 @@
+########## AllCops ##########
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - tmp/**/*
+    - vendor/**/*
+    - bin/**/*
+    - bin/**/*
+
+########## Naming ##########
+
+# 引数文字数最低3文字警告 無効
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
+########## Style ##########
+
+# ドキュメント説明コメント警告 無効
+Style/Documentation:
+  Enabled: false
+
+# 日本語コメント警告 無効
+Style/AsciiComments:
+  Enabled: false
+
+# FrozenStringLiteralComment警告 無効
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Class/Module定義スタイル警告 無効
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# rescue時 "StandardError" 明記警告 無効
+Style/RescueStandardError:
+  Enabled: false
+
+# 数値比較述語警告 無効
+Style/NumericPredicate:
+  Enabled: false
+
+########## Layout ##########
+
+# 余分なスペース警告 無効
+Layout/ExtraSpacing:
+  Enabled: false
+
+########## Metrics ##########
+
+# 一行内最大文字数 無効
+Metrics/LineLength:
+  Enabled: false
+  # Max: 160
+
+# メソッド内最大行数 無効
+Metrics/MethodLength:
+  Enabled: false
+  # Max: 20
+
+# クラス内最大行数警告 無効
+Metrics/ClassLength:
+  Enabled: false
+
+# モジュール内最大行数警告 無効
+Metrics/ModuleLength:
+  Enabled: false
+
+# 最大ABCサイズ 無効
+Metrics/AbcSize:
+  Enabled: false
+  # Max: 30
+
+# 最大循環的複雑度 無効
+Metrics/CyclomaticComplexity:
+  Enabled: false
+  # Max: 10
+
+# Perceived複雑度 無効
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+########## Bundler ##########
+
+# gemのアルファベット順ソート警告 無効
+Bundler/OrderedGems:
+  Enabled: false

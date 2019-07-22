@@ -1,0 +1,2 @@
+class ChartUpdateMaster < ApplicationRecord
+end

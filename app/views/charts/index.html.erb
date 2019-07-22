@@ -1,1 +1,20 @@
-hello
+<div class="uk-container">
+  <p><%= @charts.first.level %>（最終更新日：<%= l @chart_update_master.update_date %>）</p>
+
+  <table class="uk-table uk-table-small uk-table-divider">
+    <thead>
+      <tr>
+        <th><%= Chart.human_attribute_name(:musicname) %></th>
+        <th class="uk-width-small"><%= Chart.human_attribute_name(:puc_count) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @charts.each do |chart| %>
+        <tr>
+          <td><%= chart.musicname + " [#{chart.difficult}]" + " (#{chart.level})" %></td>
+          <td><%= chart.puc_count >= 100 ? 'over 100' : chart.puc_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
