@@ -1,6 +1,6 @@
-<div class="uk-container">
-  <p><%= @charts.first.level %>（最終更新日：<%= l @chart_update_master.update_date %>）</p>
+<% content_for(:html_title) { "PUC人数表 | lv.#{@level}" } %>
 
+<div class="uk-container">
   <table class="uk-table uk-table-small uk-table-divider">
     <thead>
       <tr>

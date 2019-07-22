@@ -28,7 +28,7 @@ module SdvxStats
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'images')
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts')
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'stylesheets')
-    Rails.application.config.assets.precompile += %w(*.eot *.woff *.woff2 *.ttf *.svg *.otf *.png *.jpg *.gif )
+    Rails.application.config.assets.precompile += %w[*.eot *.woff *.woff2 *.ttf *.svg *.otf *.png *.jpg *.gif]
 
     # generateコマンドで作成されるファイルの設定
     config.generators do |g|

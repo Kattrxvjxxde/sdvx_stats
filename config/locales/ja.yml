@@ -1,4 +1,6 @@
 ja:
+  common:
+    title: PUC人数表
   date:
     formats:
       default: "%Y/%m/%d"

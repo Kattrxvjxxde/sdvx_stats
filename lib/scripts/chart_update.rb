@@ -5,7 +5,7 @@ class ChartUpdate
   def exec
     pp '譜面情報取り込み 開始'
 
-    target_filename = Dir.entries(CHART_INFO_CSV_DIR_PATH).grep(/\d{8}/).sort.last
+    target_filename = Dir.entries(CHART_INFO_CSV_DIR_PATH).grep(/\d{8}/).max
     count = 0
 
     ActiveRecord::Base.transaction do
@@ -14,14 +14,14 @@ class ChartUpdate
           target.update!(puc_count: row['puc_count'])
         else
           Chart.create!(
-            musicname:  row['musicname'],
+            musicname: row['musicname'],
             artistname: row['artistname'],
-            difficult:  row['difficult'],
-            level:      row['level'],
-            puc_count:  row['puc_count']
+            difficult: row['difficult'],
+            level: row['level'],
+            puc_count: row['puc_count']
           )
         end
-        
+
         count += 1
         pp "#{count}件完了" if (count % 100).zero?
       end
