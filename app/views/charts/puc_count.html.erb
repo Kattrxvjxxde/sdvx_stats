@@ -22,10 +22,10 @@
             </div>
             <span class="uk-text-bold">難易度</span>
             <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
-              <% (0..3).each do |n| %>
+              <% (0..7).each do |n| %>
                 <label class="uk-margin-small-bottom">
                   <%= f.check_box :difficult_eq_any, { multiple: true, class: 'uk-checkbox' }, n, nil %>
-                  <%= n %>
+                  <%= Chart.difficult.find_value n %>
                 </label>
               <% end %>
             </div>
