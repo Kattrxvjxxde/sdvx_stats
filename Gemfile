@@ -66,6 +66,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # custmize
+gem 'jquery-rails'
 gem 'enumerize'
 gem 'kaminari'
 gem 'ransack'

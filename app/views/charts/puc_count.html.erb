@@ -1,5 +1,7 @@
 <%# タイトルタグ %>
 <% content_for(:html_title) { "#{t('common.html_title')} | lv.#{@level}" } %>
+<%# head %>
+<% content_for(:head) { javascript_include_tag 'common', 'data-turbolinks-track': 'reload' } %>
 
 <%# ----- body 開始 ----- %>
 <div class="uk-container">
@@ -11,27 +13,37 @@
         <%= search_form_for @q, url: puc_count_charts_path do |f| %>
           <div class="uk-modal-body">
             <button class="uk-modal-close-default" type="button" uk-close></button>
-            <span class="uk-text-bold">レベル</span>
+
+            <span class="uk-text-large">レベル</span>
+            <label class="uk-margin-small-left"><input class="uk-checkbox" type="checkbox"> ALL</label>
             <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
               <% (1..20).each do |n| %>
                 <label class="uk-margin-small-bottom">
-                  <%= f.check_box :level_eq_any, { multiple: true, class: 'uk-checkbox' }, n, nil %>
-                  <%= n %>
+                  <%= f.check_box :level_eq_any, { multiple: true, class: 'uk-checkbox' }, n, nil %> <%= n %>
                 </label>
               <% end %>
             </div>
-            <span class="uk-text-bold">難易度</span>
+
+            <div class="uk-divider-icon"></div>
+
+            <span class="uk-text-large">難易度</span>
+            <label class="uk-margin-small-left"><input class="uk-checkbox" type="checkbox"> ALL</label>
             <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
               <% (0..7).each do |n| %>
                 <label class="uk-margin-small-bottom">
-                  <%= f.check_box :difficult_eq_any, { multiple: true, class: 'uk-checkbox' }, n, nil %>
-                  <%= Chart.difficult.find_value n %>
+                  <%= f.check_box :difficult_eq_any, { multiple: true, class: 'uk-checkbox' }, n, nil %> <%= Chart.difficult.find_value n %>
                 </label>
               <% end %>
             </div>
-            <span class="uk-text-bold">楽曲名</span>
-            <div class="uk-margin-small">
-              <%= f.search_field :musicname_cont, class: 'uk-input' %>
+
+            <div class="uk-divider-icon"></div>
+
+            <div>
+              <span class="uk-text-large">楽曲名</span>
+              <span class="uk-button uk-button-default uk-button-small js-clear-text">clear</span>
+              <div class="uk-margin-small">
+                <%= f.search_field :musicname_cont, class: 'uk-input' %>
+              </div>
             </div>
           </div>
           <div class="uk-modal-footer uk-text-right">

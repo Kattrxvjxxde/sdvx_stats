@@ -6,6 +6,12 @@
 
 # 構築
 
+- bundle install
+
+```
+$ bundle install
+```
+
 - PostgreSQLを起動
 
 - db整備

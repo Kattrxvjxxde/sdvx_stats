@@ -20,12 +20,12 @@ module SdvxStats
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 
-    # vendor配下のassetsをパスに追加
+    # assetsパス追加
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'images')
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts')
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'stylesheets')
-    Rails.application.config.assets.precompile += %w[*.eot *.woff *.woff2 *.ttf *.svg *.otf *.png *.jpg *.gif]
+    Rails.application.config.assets.precompile += %w[*.eot *.woff *.woff2 *.ttf *.svg *.otf *.png *.jpg *.gif *.js]
 
     # generateコマンドで作成されるファイルの設定
     config.generators do |g|
