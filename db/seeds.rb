@@ -1,2 +1,2 @@
 # 譜面更新日マスタ
-require './seeds/chart_update_masters'
+require_relative 'seeds/chart_update_masters'

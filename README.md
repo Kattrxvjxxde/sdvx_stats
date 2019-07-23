@@ -1,24 +1,34 @@
-# README
+# 環境
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- `ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-darwin18]`
 
-Things you may want to cover:
+- `postgres (PostgreSQL) 11.4`
 
-* Ruby version
+# 構築
 
-* System dependencies
+- PostgreSQLを起動
 
-* Configuration
+- db整備
 
-* Database creation
+```
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
+$ bundle exec rails db:seed
+```
 
-* Database initialization
+# 起動
 
-* How to run the test suite
+```
+$ bundle exec rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+# 機能
 
-* ...
+## 譜面データ取込
+
+- 取り込むデータを `datas/chart_info/chart_info_YYYYMMDD.csv` として用意し、以下実行
+
+```
+$ bundle exec rails r lib/scripts/chart_update.rb
+```
