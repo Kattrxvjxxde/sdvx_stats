@@ -1,19 +1,19 @@
 <%# タイトルタグ %>
-<% content_for(:html_title) { "#{t('common.html_title')} | lv.#{@level}" } %>
+<% content_for(:html_title) { t('common.html_title') } %>
 <%# head %>
 <% content_for(:head) { javascript_include_tag 'common', 'data-turbolinks-track': 'reload' } %>
 
 <%# ----- body 開始 ----- %>
 <div class="uk-container">
   <div class="uk-section-xsmall">
-    <div class="uk-card uk-card-default uk-card-body">
+    <div class="uk-margin-bottom uk-padding-large uk-tile uk-tile-muted">
       <%# 表示中の検索条件 %>
       <p class="uk-margin-small uk-text-bold">検索条件</p>
       <%= display_search_conditions(@q.conditions) %>
 
       <%# 検索モーダル %>
       <div class="uk-flex uk-flex-right">
-        <a class="uk-button uk-button-primary" href="#search-modal-container" uk-toggle>条件選択</a>
+        <a class="uk-button uk-button-default uk-background-default" href="#search-modal-container" uk-toggle>条件選択</a>
       </div>
     </div>
     <div id="search-modal-container" class="uk-modal-container" uk-modal>
@@ -85,11 +85,27 @@
 
     <%# テーブル表示部 %>
     <% if @charts.present? %>
-      <table class="uk-table uk-table-small uk-table-divider">
+      <table class="uk-margin-xlarge-bottom uk-table uk-table-small uk-table-divider">
         <thead>
           <tr>
-            <th class="uk-width-auto"><%= Chart.human_attribute_name(:musicname) %></th>
-            <th class="uk-width-1-4"><%= Chart.human_attribute_name(:puc_count) %></th>
+            <th class="uk-width-auto">
+              <%= sort_link(
+                @q,
+                :id,
+                Chart.human_attribute_name(:musicname) + '（ソートは収録順）',
+                { default_order: :asc },
+                { class: 'uk-text-muted uk-link-reset' }
+              ) %>
+            </th>
+            <th class="uk-width-1-4">
+              <%= sort_link(
+                @q,
+                :puc_count,
+                Chart.human_attribute_name(:puc_count),
+                { default_order: :desc },
+                { class: 'uk-text-muted uk-link-reset' }
+              ) %>
+          </th>
           </tr>
         </thead>
         <tbody>
@@ -105,11 +121,15 @@
         </tbody>
       </table>
     <% else %>
-      <div class="uk-margin">
+      <div class="uk-margin-large">
         <p class="uk-text-muted">条件に合致する楽曲が見つかりませんでした。</p>
       </div>
     <% end %>
-    <%= paginate @charts, themes: 'uikit' %>
+    <div class="uk-position-medium uk-position-bottom-center uk-position-fixed">
+      <div class ="uk-padding-remove-vertical uk-padding-horizontal uk-card uk-card-default uk-card-hover uk-card-body">
+        <%= paginate @charts, themes: 'uikit' %>
+      </div>
+    </div>
   </div>
 </div>
 <%# ----- body 終了 ----- %>

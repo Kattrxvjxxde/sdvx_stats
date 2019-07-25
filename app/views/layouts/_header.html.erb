@@ -1,11 +1,11 @@
-<div class="uk-section-xsmall uk-section-primary">
+<div class="uk-padding-small uk-section uk-section-primary" uk-sticky>
   <div class="uk-container">
     <nav class="uk-navbar">
       <div class="uk-navbar-left">
         <%= link_to t('common.html_title'), root_path, class: 'uk-text-lead uk-text-emphasis uk-link-reset' %>
       </div>
       <div class="uk-navbar-right">
-        <span class="uk-text-meta">最終更新日：<%= l ChartUpdateMaster.first.update_date %></span>
+        <span class="uk-text-meta">最終更新：<%= l ChartUpdateMaster.first.update_date %></span>
       </div>
   </div>
 </div>

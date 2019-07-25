@@ -6,8 +6,6 @@ class ChartsController < ApplicationController
 
     @q = Chart.ransack(params[:q])
     @charts = @q.result(distinct: true)
-                .order(puc_count: :desc)
-                .order(id: :asc)
                 .page(params[:page])
                 .per(PER_PAGE)
   end

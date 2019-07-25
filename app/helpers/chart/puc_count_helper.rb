@@ -23,14 +23,14 @@ module Chart::PucCountHelper
     val = condition.value
 
     val_str = case attr_name
-      when 'level'
-        val.join(', ')
-      when 'difficult'
-        val.map { |v| Chart.difficult.find_value v }.join(', ')
-      when 'musicname'
-        "『#{val}』 を含む"
-      end
+              when 'level'
+                val.join(', ')
+              when 'difficult'
+                val.map { |v| Chart.difficult.find_value v }.join(', ')
+              when 'musicname'
+                "『#{val}』 を含む"
+              end
 
-    Chart.human_attribute_name(attr_name) + ' ・・・ ' + val_str
+    Chart.human_attribute_name(attr_name) + ' … ' + val_str
   end
 end
