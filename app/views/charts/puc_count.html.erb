@@ -6,16 +6,15 @@
 <%# ----- body 開始 ----- %>
 <div class="uk-container">
   <div class="uk-section-xsmall">
-    <%# 表示中の検索条件 %>
-    <div>
-      <% @q.conditions.each do |condition| %>
-        <%= condition.a.first.attr_name %>
-        <%= condition.value.is_a?(Array) ? condition.value.join(',') : condition.value  %>
-      <% end %>
-    </div>
-    <%# 検索モーダル %>
-    <div class="uk-flex uk-flex-right">
-      <a class="uk-button uk-button-default" href="#search-modal-container" uk-toggle>条件選択</a>
+    <div class="uk-card uk-card-default uk-card-body">
+      <%# 表示中の検索条件 %>
+      <p class="uk-margin-small uk-text-bold">検索条件</p>
+      <%= display_search_conditions(@q.conditions) %>
+
+      <%# 検索モーダル %>
+      <div class="uk-flex uk-flex-right">
+        <a class="uk-button uk-button-primary" href="#search-modal-container" uk-toggle>条件選択</a>
+      </div>
     </div>
     <div id="search-modal-container" class="uk-modal-container" uk-modal>
       <div class="uk-modal-dialog">
@@ -23,6 +22,7 @@
           <div class="uk-modal-body">
             <button class="uk-modal-close-default" type="button" uk-close></button>
 
+            <%# レベル選択 %>
             <div class="js-reset-container">
               <div class="uk-flex">
                 <span class="uk-text-large">レベル</span>
@@ -42,6 +42,7 @@
 
             <div class="uk-divider-icon"></div>
 
+            <%# 難易度選択 %>
             <div class="js-reset-container">
               <div class="uk-flex">
                 <span class="uk-text-large">難易度</span>
@@ -61,6 +62,7 @@
 
             <div class="uk-divider-icon"></div>
 
+            <%# 楽曲名指定 %>
             <div class="js-reset-container">
               <div class="uk-flex">
                 <span class="uk-text-large">楽曲名</span>
@@ -81,23 +83,32 @@
       </div>
     </div>
 
-    <%# テーブル %>
-    <table class="uk-table uk-table-small uk-table-divider">
-      <thead>
-        <tr>
-          <th class="uk-width-auto"><%= Chart.human_attribute_name(:musicname) %></th>
-          <th class="uk-width-1-4"><%= Chart.human_attribute_name(:puc_count) %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @charts.each do |chart| %>
+    <%# テーブル表示部 %>
+    <% if @charts.present? %>
+      <table class="uk-table uk-table-small uk-table-divider">
+        <thead>
           <tr>
-            <td><%= chart.musicname + " [#{chart.difficult}]" + " (#{chart.level})" %></td>
-            <td><%= chart.puc_count >= 100 ? '100 ↑' : chart.puc_count %></td>
+            <th class="uk-width-auto"><%= Chart.human_attribute_name(:musicname) %></th>
+            <th class="uk-width-1-4"><%= Chart.human_attribute_name(:puc_count) %></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @charts.each do |chart| %>
+            <tr>
+              <td>
+                <%= chart.musicname %>
+                <span class="uk-text-small uk-text-muted"><%= "[#{chart.difficult}]" + " (#{chart.level})" %></span>
+              </td>
+              <td><%= chart.puc_count >= 100 ? '100 ↑' : chart.puc_count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="uk-margin">
+        <p class="uk-text-muted">条件に合致する楽曲が見つかりませんでした。</p>
+      </div>
+    <% end %>
     <%= paginate @charts, themes: 'uikit' %>
   </div>
 </div>
