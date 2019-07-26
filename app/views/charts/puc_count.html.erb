@@ -147,6 +147,7 @@
         <p class="uk-text-muted">条件に合致する楽曲が見つかりませんでした。</p>
       </div>
     <% end %>
+    <%= paginate @charts, window: @window_size %>
   </div>
 </div>
 <%# ----- body 終了 ----- %>
