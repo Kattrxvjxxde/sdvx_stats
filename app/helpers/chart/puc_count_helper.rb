@@ -24,7 +24,7 @@ module Chart::PucCountHelper
 
     val_str = case attr_name
               when 'level'
-                val.join(', ')
+                val.to_s
               when 'difficult'
                 val.map { |v| Chart.difficult.find_value v }.join(', ')
               when 'musicname'

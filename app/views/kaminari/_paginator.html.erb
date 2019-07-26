@@ -8,7 +8,7 @@
 -%>
 <%= paginator.render do -%>
   <div class="uk-padding-small uk-background-default">
-    <ul class="uk-margin-remove uk-pagination uk-flex-center">
+    <ul class="uk-margin-remove-bottom uk-pagination uk-flex-center">
       <%= first_page_tag unless current_page.first? %>
       <%#= prev_page_tag unless current_page.first? %>
       <% each_page do |page| -%>

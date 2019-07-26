@@ -11,5 +11,6 @@ class ChartsController < ApplicationController
                 .page(params[:page])
                 .per(PER_PAGE)
     @charts = @charts.order(id: :desc) unless @s.present?
+    @window_size = browser.device.mobile? ? 2 : 5
   end
 end

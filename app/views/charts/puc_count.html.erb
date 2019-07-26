@@ -4,7 +4,7 @@
 <% content_for(:head) { javascript_include_tag 'common', 'data-turbolinks-track': 'reload' } %>
 
 <%# ----- body 開始 ----- %>
-<div class="uk-container">
+<div class="uk-container uk-background-default">
   <div class="uk-section-xsmall">
     <div class="uk-margin-bottom uk-padding-large uk-tile uk-tile-muted">
       <%# 表示中の検索条件 %>
@@ -13,8 +13,8 @@
 
       <%# 検索モーダル %>
       <div class="uk-flex uk-flex-right">
-        <a class="uk-button uk-button-default uk-background-default" href="#search-modal-container" uk-toggle>条件選択</a>
-        <%= link_to 'リセット', puc_count_charts_path, class: 'uk-margin-small-left uk-button uk-button-default uk-background-default' %>
+        <a class="uk-button uk-button-secondary uk-button-small" href="#search-modal-container" uk-toggle>条件選択</a>
+        <%= link_to 'リセット', puc_count_charts_path, class: 'uk-margin-small-left uk-button uk-button-secondary uk-button-small' %>
       </div>
     </div>
     <div id="search-modal-container" class="uk-modal-container" uk-modal>
@@ -28,20 +28,28 @@
               <div class="uk-flex">
                 <span class="uk-text-large">レベル</span>
                 <div class="uk-margin-small-left uk-margin-auto-vertical">
-                  <a class="uk-button uk-button-default uk-button-small js-reset-checkbox" href="javascript:void(0)">リセット</a>
+                  <%= f.radio_button :level_eq, '', { checked: true, class: 'uk-radio' } %> All
                 </div>
               </div>
-              <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
-                <% (1..20).each do |n| %>
+              <div class="uk-margin-small uk-margin-remove-bottom uk-grid-small uk-child-width-auto uk-grid">
+                <% (1..10).each do |n| %>
                   <label class="uk-margin-small-bottom">
-                    <%= f.check_box :level_eq_any, { multiple: true, class: 'uk-checkbox js-reset-target' }, n, nil %>
+                    <%= f.radio_button :level_eq, n, { class: 'uk-radio' } %>
+                    <%= n %>
+                  </label>
+                <% end %>
+              </div>
+              <div class="uk-margin-remove-vertical uk-grid-small uk-child-width-auto uk-grid">
+                <% (11..20).each do |n| %>
+                  <label class="uk-margin-small-bottom">
+                    <%= f.radio_button :level_eq, n, { class: 'uk-radio' } %>
                     <%= n %>
                   </label>
                 <% end %>
               </div>
             </div>
 
-            <div class="uk-divider-icon"></div>
+            <hr>
 
             <%# 難易度選択 %>
             <div class="js-reset-container">
@@ -51,8 +59,16 @@
                   <a class="uk-button uk-button-default uk-button-small js-reset-checkbox" href="javascript:void(0)">リセット</a>
                 </div>
               </div>
-              <div class="uk-margin-small uk-grid-small uk-child-width-auto uk-grid">
-                <% (0..7).each do |n| %>
+              <div class="uk-margin-small uk-margin-remove-bottom uk-grid-small uk-child-width-auto uk-grid">
+                <% (0..3).each do |n| %>
+                  <label class="uk-margin-small-bottom">
+                    <%= f.check_box :difficult_eq_any, { multiple: true, class: 'uk-checkbox js-reset-target' }, n, nil %>
+                    <%= Chart.difficult.find_value n %>
+                  </label>
+                <% end %>
+              </div>
+              <div class="uk-margin-remove-vertical uk-grid-small uk-child-width-auto uk-grid">
+                <% (4..7).each do |n| %>
                   <label class="uk-margin-small-bottom">
                     <%= f.check_box :difficult_eq_any, { multiple: true, class: 'uk-checkbox js-reset-target' }, n, nil %>
                     <%= Chart.difficult.find_value n %>
@@ -61,7 +77,7 @@
               </div>
             </div>
 
-            <div class="uk-divider-icon"></div>
+            <hr>
 
             <%# 楽曲名指定 %>
             <div class="js-reset-container">
@@ -85,8 +101,13 @@
     </div>
 
     <%# テーブル表示部 %>
+    <div class="uk-width-1-1" uk-sticky="offset: 80">
+      <div class ="uk-padding-remove uk-card uk-card-default uk-card-body uk-box-shadow-large">
+        <%= paginate @charts, window: @window_size %>
+      </div>
+    </div>
     <% if @charts.present? %>
-      <table class="uk-margin-xlarge-bottom uk-table uk-table-small uk-table-divider">
+      <table class="uk-table uk-table-small uk-table-divider">
         <thead>
           <tr>
             <th class="uk-width-auto">
@@ -126,11 +147,6 @@
         <p class="uk-text-muted">条件に合致する楽曲が見つかりませんでした。</p>
       </div>
     <% end %>
-    <div class="uk-position-medium uk-position-bottom-center uk-position-fixed">
-      <div class ="uk-padding-remove-vertical uk-padding-horizontal uk-card uk-card-default uk-card-hover uk-card-body">
-        <%= paginate @charts, themes: 'uikit' %>
-      </div>
-    </div>
   </div>
 </div>
 <%# ----- body 終了 ----- %>
