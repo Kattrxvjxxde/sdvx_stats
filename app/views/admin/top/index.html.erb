@@ -1,0 +1,5 @@
+<%= current_admin_user.name %>
+<br>
+<%= current_admin_user.email %>
+<br>
+<%= link_to 'logout', destroy_admin_user_session_path, method: :delete %>

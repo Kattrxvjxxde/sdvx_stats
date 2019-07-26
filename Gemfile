@@ -66,8 +66,23 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # custmize
+
+# jquery
 gem 'jquery-rails'
+
+# devise
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+# enum
 gem 'enumerize'
+
+# pagination
 gem 'kaminari'
+
+# ransack
 gem 'ransack'
+
+# browser
 gem 'browser'
