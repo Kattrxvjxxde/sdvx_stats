@@ -1,6 +1,6 @@
 module Chart::PucCountHelper
   def display_search_conditions(conditions)
-    tag.ul class: 'uk-margin-remove-top uk-list uk-list-bullet' do
+    tag.ul class: 'uk-margin-remove-top uk-list' do
       if conditions.present?
         safe_join(
           conditions.map do |condition|

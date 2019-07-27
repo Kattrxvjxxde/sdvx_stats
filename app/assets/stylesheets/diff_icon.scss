@@ -12,42 +12,38 @@
   &__NOV {
     background-image: image-url('diff_icon/01_nov.png');
     background-size: cover;
-    color: #000;
   }
   &__ADV {
     background-image: image-url('diff_icon/02_adv.png');
     background-size: cover;
-    color: #000;
   }
   &__EXH {
     background-image: image-url('diff_icon/03_exh.png');
     background-size: cover;
-    color: #000;
   }
   &__MXM {
     background-image: image-url('diff_icon/04_mxm.png');
     background-size: cover;
-    color: #000;
   }
   &__INF {
     background-image: image-url('diff_icon/05_inf.png');
     background-size: cover;
-    color: #fff;
+    color: #eee;
   }
   &__GRV {
     background-image: image-url('diff_icon/06_grv.png');
     background-size: cover;
-    color: #fff;
+    color: #eee;
   }
   &__HVN {
     background-image: image-url('diff_icon/07_hvn.png');
     background-size: cover;
-    color: #fff;
+    color: #eee;
   }
   &__VVD {
     background-image: image-url('diff_icon/08_vvd.png');
     background-size: cover;
-    color: #fff;
+    color: #eee;
   }
 
   &__text {
@@ -57,5 +53,14 @@
     margin: auto;
     text-align: center; 
     font-family: 'AvenirNextCondensed-Bold';
+  }
+  &__diff-text {
+    position: absolute;
+    width: 100%;
+    top: 8px;
+    margin: auto;
+    text-align: center; 
+    font-family: 'AvenirNextCondensed-Bold';
+    font-size: 12px;
   }
 }

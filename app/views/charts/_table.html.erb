@@ -5,7 +5,7 @@
   </div>
 </div>
 <% if @charts.present? %>
-  <table class="uk-table uk-table-small uk-table-middle uk-table-divider">
+  <table class="uk-table uk-table-small uk-table-middle uk-table-divider uk-table-hover">
     <thead>
       <tr>
         <th class="uk-width-auto">
@@ -34,7 +34,7 @@
           <td>
             <div class="uk-flex uk-flex-middle">
               <div class="uk-margin-small-right diff-icon__box diff-icon__<%= chart.difficult %>">
-                <span class="diff-icon__text"><%= chart.level %></span>
+                <span class="diff-icon__text"><%= chart.level.to_s.rjust(2, '0') %></span>
               </div>
               <%= chart.musicname %>
             </div>

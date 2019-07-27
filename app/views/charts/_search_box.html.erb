@@ -26,7 +26,7 @@
           </div>
           <div class="uk-margin-small uk-margin-remove-bottom uk-grid-small uk-child-width-auto uk-grid">
             <% (1..10).each do |n| %>
-              <label class="uk-margin-small-bottom">
+              <label class="uk-margin-small-bottom" style="font-family: 'AvenirNextCondensed-Bold';">
                 <%= f.radio_button :level_eq, n, { class: 'uk-radio' } %>
                 <%= n.to_s.rjust(2, '0') %>
               </label>
@@ -34,7 +34,7 @@
           </div>
           <div class="uk-margin-remove-vertical uk-grid-small uk-child-width-auto uk-grid">
             <% (11..20).each do |n| %>
-              <label class="uk-margin-small-bottom">
+              <label class="uk-margin-small-bottom" style="font-family: 'AvenirNextCondensed-Bold';">
                 <%= f.radio_button :level_eq, n, { class: 'uk-radio' } %>
                 <%= n %>
               </label>
@@ -54,17 +54,23 @@
           </div>
           <div class="uk-margin-small uk-margin-remove-bottom uk-grid-small uk-child-width-auto uk-grid">
             <% (0..3).each do |n| %>
-              <label class="uk-margin-small-bottom">
+              <label class="uk-margin-small-bottom uk-flex uk-flex-middle">
                 <%= f.check_box :difficult_eq_any, { multiple: true, class: 'uk-checkbox js-reset-target' }, n, nil %>
-                <%= Chart.difficult.find_value n %>
+                <% diff = Chart.difficult.find_value n %>
+                <div class="uk-margin-small-left diff-icon__box diff-icon__<%= diff %>">
+                  <span class="diff-icon__diff-text"><%= diff %></span>
+                </div>
               </label>
             <% end %>
           </div>
           <div class="uk-margin-remove-vertical uk-grid-small uk-child-width-auto uk-grid">
             <% (4..7).each do |n| %>
-              <label class="uk-margin-small-bottom">
+              <label class="uk-margin-small-bottom uk-flex uk-flex-middle">
                 <%= f.check_box :difficult_eq_any, { multiple: true, class: 'uk-checkbox js-reset-target' }, n, nil %>
-                <%= Chart.difficult.find_value n %>
+                <% diff = Chart.difficult.find_value n %>
+                <div class="uk-margin-small-left diff-icon__box diff-icon__<%= diff %>">
+                  <span class="diff-icon__diff-text"><%= diff %></span>
+                </div>
               </label>
             <% end %>
           </div>
