@@ -5,7 +5,7 @@
   </div>
 </div>
 <% if @charts.present? %>
-  <table class="uk-table uk-table-small uk-table-divider">
+  <table class="uk-table uk-table-small uk-table-middle uk-table-divider">
     <thead>
       <tr>
         <th class="uk-width-auto">
@@ -17,7 +17,7 @@
             { class: 'uk-text-muted uk-link-reset' }
           ) %>
         </th>
-        <th class="uk-width-1-4">
+        <th class="uk-width-1-5">
           <%= sort_link(
             @q,
             :puc_count,
@@ -32,10 +32,16 @@
       <% @charts.each do |chart| %>
         <tr>
           <td>
-            <%= chart.musicname %>
-            <span class="uk-text-small uk-text-muted"><%= "[#{chart.difficult}]" + " (#{chart.level})" %></span>
+            <div class="uk-flex uk-flex-middle">
+              <div class="uk-margin-small-right diff-icon__box diff-icon__<%= chart.difficult %>">
+                <span class="diff-icon__text"><%= chart.level %></span>
+              </div>
+              <%= chart.musicname %>
+            </div>
           </td>
-          <td><%= chart.puc_count >= 100 ? '100 ↑' : chart.puc_count %></td>
+          <td>
+            <%= chart.puc_count >= 100 ? '100 ↑' : chart.puc_count %>
+          </td>
         </tr>
       <% end %>
     </tbody>

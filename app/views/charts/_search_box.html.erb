@@ -28,7 +28,7 @@
             <% (1..10).each do |n| %>
               <label class="uk-margin-small-bottom">
                 <%= f.radio_button :level_eq, n, { class: 'uk-radio' } %>
-                <%= n %>
+                <%= n.to_s.rjust(2, '0') %>
               </label>
             <% end %>
           </div>

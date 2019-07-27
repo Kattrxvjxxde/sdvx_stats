@@ -1,0 +1,62 @@
+.diff-icon {
+  &__box {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+  }
+
+  &__NOV {
+    background-image: image-url('diff_icon/01_nov.png');
+    background-size: cover;
+    color: #000;
+  }
+  &__ADV {
+    background-image: image-url('diff_icon/02_adv.png');
+    background-size: cover;
+    color: #000;
+  }
+  &__EXH {
+    background-image: image-url('diff_icon/03_exh.png');
+    background-size: cover;
+    color: #000;
+  }
+  &__MXM {
+    background-image: image-url('diff_icon/04_mxm.png');
+    background-size: cover;
+    color: #000;
+  }
+  &__INF {
+    background-image: image-url('diff_icon/05_inf.png');
+    background-size: cover;
+    color: #fff;
+  }
+  &__GRV {
+    background-image: image-url('diff_icon/06_grv.png');
+    background-size: cover;
+    color: #fff;
+  }
+  &__HVN {
+    background-image: image-url('diff_icon/07_hvn.png');
+    background-size: cover;
+    color: #fff;
+  }
+  &__VVD {
+    background-image: image-url('diff_icon/08_vvd.png');
+    background-size: cover;
+    color: #fff;
+  }
+
+  &__text {
+    position: absolute;
+    width: 100%;
+    top: 4px;
+    margin: auto;
+    text-align: center; 
+    font-family: 'SimHei';
+    font-size: 18px;
+  }
+}
