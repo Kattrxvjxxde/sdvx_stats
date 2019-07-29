@@ -2,14 +2,46 @@
 <div class="uk-margin-bottom uk-padding-large uk-tile uk-tile-muted uk-box-shadow-large">
   <%# 表示中の検索条件 %>
   <p class="uk-margin-small uk-text-bold">検索条件</p>
-  <%= display_search_conditions(@q.conditions) %>
+  <ul class="uk-margin-remove-top uk-list">
+    <% if @q.conditions.present? %>
+      <li class="uk-margin-remove-top">
+        <% @q.conditions.each do |condition| %>
+          <div class="uk-margin-remove-top uk-flex uk-flex-middle" uk-grid>
+            <% attr_name = condition.a.first.attr_name %>
+            <% val = condition.value %>
+            <div class="uk-width-auto"><%= Chart.human_attribute_name attr_name %>：</div>
+            <div class="uk-padding-remove-left uk-width-expand">
+              <% if attr_name == 'level' %>
+                <span style="font-family: 'AvenirNextCondensed-Bold';"> <%= val %></span>
+              <% elsif attr_name == 'difficult' %>
+                <div class="uk-flex">
+                  <% val.each do |n| %>
+                    <% diff = Chart.difficult.find_value n %>
+                    <div class="diff-icon__box diff-icon__<%= diff %>">
+                      <span class="diff-icon__diff-text"><%= diff %></span>
+                    </div>
+                  <% end %>
+                </div>
+              <% elsif attr_name == 'musicname' %>
+                "<%= val %>" を含む
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% else %>
+      <li>全譜面</li>
+    <% end %>
+  </ul>
 
-  <%# 検索モーダル %>
+  <%# 条件選択/リセットボタン %>
   <div class="uk-flex uk-flex-right">
     <a class="uk-button uk-button-secondary uk-button-small" href="#search-modal-container" uk-toggle>条件選択</a>
     <%= link_to 'リセット', puc_count_charts_path, class: 'uk-margin-small-left uk-button uk-button-secondary uk-button-small' %>
   </div>
 </div>
+
+<%# 検索モーダル %>
 <div id="search-modal-container" class="uk-modal-container" uk-modal>
   <div class="uk-modal-dialog">
     <%= search_form_for @q, url: puc_count_charts_path do |f| %>
@@ -87,7 +119,7 @@
             </div>
           </div>
           <div class="uk-margin-small">
-            <%= f.search_field :musicname_cont, class: 'uk-input js-reset-target' %>
+            <%= f.search_field :musicname_cont, class: 'uk-input js-reset-target', maxlength: 20 %>
           </div>
         </div>
       </div>
@@ -98,3 +130,4 @@
     <% end %>
   </div>
 </div>
+
