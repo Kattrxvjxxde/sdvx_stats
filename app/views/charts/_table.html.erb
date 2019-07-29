@@ -1,9 +1,4 @@
 <%# テーブル表示部 %>
-<div class="uk-width-1-1" uk-sticky="offset: 80">
-  <div class ="uk-padding-remove uk-card uk-card-default uk-card-body uk-box-shadow-large js-paginate">
-    <%= paginate @charts, window: @window_size %>
-  </div>
-</div>
 <% if @charts.present? %>
   <table class="uk-table uk-table-small uk-table-middle uk-table-divider uk-table-hover">
     <thead>
@@ -51,5 +46,4 @@
     <p class="uk-text-muted">条件に合致する楽曲が見つかりませんでした。</p>
   </div>
 <% end %>
-<%= paginate @charts, window: @window_size %>
 </div>

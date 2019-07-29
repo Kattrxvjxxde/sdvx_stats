@@ -1,43 +1,54 @@
 <%# 検索ボックス %>
-<div class="uk-margin-bottom uk-padding-large uk-tile uk-tile-muted uk-box-shadow-large">
+<div class="uk-padding-small uk-tile uk-tile-muted uk-box-shadow-xlarge" uk-sticky="offset: 70;">
   <%# 表示中の検索条件 %>
-  <p class="uk-margin-small uk-text-bold">検索条件</p>
+  <div uk-grid>
+    <div class="uk-width-auto uk-flex uk-flex-left uk-margin-small uk-text-bold">検索条件</div>
+    <div class="uk-width-expand uk-flex uk-flex-right uk-margin-remove uk-text-success">最終更新：<%= l @chart_update_date %></div>
+  </div>
   <ul class="uk-margin-remove-top uk-list">
-    <% if @q.conditions.present? %>
-      <li class="uk-margin-remove-top">
-        <% @q.conditions.each do |condition| %>
-          <div class="uk-margin-remove-top uk-flex uk-flex-middle" uk-grid>
-            <% attr_name = condition.a.first.attr_name %>
-            <% val = condition.value %>
-            <div class="uk-width-auto"><%= Chart.human_attribute_name attr_name %>：</div>
-            <div class="uk-padding-remove-left uk-width-expand">
-              <% if attr_name == 'level' %>
-                <span style="font-family: 'AvenirNextCondensed-Bold';"> <%= val %></span>
-              <% elsif attr_name == 'difficult' %>
-                <div class="uk-flex">
-                  <% val.each do |n| %>
-                    <% diff = Chart.difficult.find_value n %>
-                    <div class="diff-icon__box diff-icon__<%= diff %>">
-                      <span class="diff-icon__diff-text"><%= diff %></span>
-                    </div>
-                  <% end %>
-                </div>
-              <% elsif attr_name == 'musicname' %>
-                "<%= val %>" を含む
-              <% end %>
-            </div>
+    <li class="uk-margin-remove-top">
+      <div class="uk-margin-remove-top uk-flex uk-flex-middle" uk-grid>
+        <div class="uk-width-auto"><%= Chart.human_attribute_name 'level' %>：</div>
+        <div class="uk-padding-remove-left uk-width-expand">
+          <span class="uk-margin-small-left" style="font-family: 'AvenirNextCondensed-Bold';"> <%= @q_conditions['level'] %></span>
+        </div>
+      </div>
+      <div class="uk-margin-remove-top uk-flex uk-flex-middle" uk-grid>
+        <div class="uk-width-auto"><%= Chart.human_attribute_name 'difficult' %>：</div>
+        <div class="uk-padding-remove-left uk-width-expand">
+          <div class="uk-flex">
+            <% @q_conditions['difficult'].each do |n| %>
+              <% diff = Chart.difficult.find_value n %>
+              <div class="diff-icon__box diff-icon__<%= diff %>">
+                <span class="diff-icon__diff-text"><%= diff %></span>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      </li>
-    <% else %>
-      <li>全譜面</li>
-    <% end %>
+        </div>
+      </div>
+      <% if @q_conditions['musicname'].present? %>
+        <div class="uk-margin-remove-top uk-flex uk-flex-middle" uk-grid>
+          <div class="uk-width-auto"><%= Chart.human_attribute_name 'musicname' %>：</div>
+          <div class="uk-padding-remove-left uk-width-expand">
+            "<%= @q_conditions['musicname'] %>" を含む
+          </div>
+        </div>
+      <% end %>
+    </li>
   </ul>
 
   <%# 条件選択/リセットボタン %>
   <div class="uk-flex uk-flex-right">
     <a class="uk-button uk-button-secondary uk-button-small" href="#search-modal-container" uk-toggle>条件選択</a>
     <%= link_to 'リセット', puc_count_charts_path, class: 'uk-margin-small-left uk-button uk-button-secondary uk-button-small' %>
+  </div>
+
+
+  <hr>
+
+  <%# ページネーション %>
+  <div class="uk-margin-top">
+    <%= paginate @charts, window: @window_size %>
   </div>
 </div>
 
@@ -52,7 +63,7 @@
         <div class="js-reset-container">
           <div class="uk-flex">
             <span class="uk-text-large">レベル</span>
-            <div class="uk-margin-small-left uk-margin-auto-vertical">
+            <div class="uk-margin-small-left uk-margin-auto-vertical" style="font-family: 'AvenirNextCondensed-Bold';">
               <%= f.radio_button :level_eq, '', { checked: true, class: 'uk-radio' } %> All
             </div>
           </div>

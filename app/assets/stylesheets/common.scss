@@ -14,3 +14,9 @@ input[type="button"] {
       outline-offset: -2px;
     }
 }
+
+.header-nav {
+  background: -webkit-linear-gradient(90deg, rgb(30, 103, 255), rgb(131, 177, 255));
+  background: linear-gradient(90deg, rgb(30, 103, 255), rgb(131, 177, 255));
+  color: #fff;
+}
