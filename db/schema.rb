@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_26_074327) do
+ActiveRecord::Schema.define(version: 2019_07_30_085227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2019_07_26_074327) do
     t.integer "difficult", comment: "難易度"
     t.integer "level", comment: "レベル"
     t.integer "puc_count", comment: "PUC人数s"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "music_id", comment: "楽曲ID"
+  end
+
+  create_table "musics", force: :cascade do |t|
+    t.string "musicname", null: false, comment: "楽曲名"
+    t.string "artistname", null: false, comment: "作曲者"
+    t.integer "updated_version", comment: "初出バージョン"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
