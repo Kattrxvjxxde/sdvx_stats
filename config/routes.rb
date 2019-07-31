@@ -28,4 +28,11 @@ Rails.application.routes.draw do
     # root
     root 'top#index'
   end
+
+  ##### API #####
+
+  # 譜面
+  namespace :api do
+    resources :charts, only: [:create]
+  end
 end

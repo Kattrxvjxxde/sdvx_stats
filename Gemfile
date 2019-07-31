@@ -86,3 +86,6 @@ gem 'ransack'
 
 # browser
 gem 'browser'
+
+# search table that should be indexed
+gem 'lol_dba'
