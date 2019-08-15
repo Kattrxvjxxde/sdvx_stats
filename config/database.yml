@@ -18,3 +18,4 @@ production:
   <<: *default
   database: sdvx_stats_production
   password: <%= ENV['DB_PWD'] %>
+  socket: /var/lib/mysql/mysql.sock
