@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   ##### フロント #####
 
   # 譜面
-  resources :charts, only: [:index] do
-    collection do
-      get 'puc_count'
-      post 'puc_count'
-    end
+  namespace :charts do
+    get :puc_count
+    post :puc_count
+  end
+
+  # プレイヤー
+  namespace :players do
+    get :volforce_rank
   end
 
   # root
