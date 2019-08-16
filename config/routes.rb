@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   ##### フロント #####
 
+  # root
+  root 'top#index'
+
   # 譜面
   namespace :charts do
     get :puc_count
@@ -11,9 +14,6 @@ Rails.application.routes.draw do
   namespace :players do
     get :volforce_rank
   end
-
-  # root
-  root 'charts#puc_count'
 
   ##### 管理画面 #####
 

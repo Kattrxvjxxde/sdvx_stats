@@ -1,0 +1,42 @@
+<%# TOPページ %>
+<div class="uk-container">
+  <div class="uk-padding-large-right uk-padding-large-left">
+    <div class="uk-margin-top uk-margin-bottom uk-grid-match" uk-grid>
+      <div class="uk-width-1-2@s">
+        <div class="uk-flex uk-flex-middle uk-flex-center">
+          <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large">
+            <%= image_tag 'logo.png' %>
+          </div>
+        </div>
+      </div>
+      <div class="uk-padding-remove-bottom uk-width-1-2@s uk-card uk-card-body">
+        <div>
+          <h2>メニュー</h2>
+          <ul class="uk-list">
+            <li>
+              <%= link_to t('common.puc_count_title'), charts_puc_count_path, class: 'cp_btn' %>
+            </li>
+            <li>
+              <%= link_to t('common.volforce_rank_title'), players_volforce_rank_path, class: 'cp_btn' %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="uk-section-small">
+      <div class="uk-container uk-margin-right uk-margin-left">
+        <div>
+          <h3>SDVX STATS とは</h3>
+          <p>
+            SDVX STATS は、音楽ゲーム「SOUND VOLTEX VIVID WAVE」の <%= link_to '公式サイト', 'https://p.eagate.573.jp/game/sdvx/v/p/top/' %> から取得できる情報等を元に作成した統計を掲載した非公式サイトです。
+          </p>
+          <h3>ご利用について</h3>
+          <p>
+            統計データの更新は手動実行のため、更新が滞る場合があります。予めご了承ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
