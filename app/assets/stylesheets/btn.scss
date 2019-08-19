@@ -1,0 +1,24 @@
+.cp_btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0.6em;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 24px;
+  font-weight: bold;
+  background: #26C6DA;
+  border-bottom: 2px solid #00838F;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+}
+.cp_btn:hover {
+  text-decoration: none;
+  color: #FFF;
+}
+.cp_btn:active {
+  border-bottom: 2px solid #26C6DA;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+}

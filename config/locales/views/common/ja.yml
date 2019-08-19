@@ -1,4 +1,6 @@
 ja:
   common:
-    html_title: PUC人数表
+    html_title: 'SDVX STATS'
     admin_html_title: 管理画面
+    puc_count_title: PUC人数表
+    volforce_rank_title: VFランキング

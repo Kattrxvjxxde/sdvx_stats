@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
   ##### フロント #####
 
+  # root
+  root 'top#index'
+
   # 譜面
-  resources :charts, only: [:index] do
-    collection do
-      get 'puc_count'
-      post 'puc_count'
-    end
+  namespace :charts do
+    get :puc_count
+    post :puc_count
   end
 
-  # root
-  root 'charts#puc_count'
+  # プレイヤー
+  namespace :players do
+    get :volforce_rank
+  end
 
   ##### 管理画面 #####
 

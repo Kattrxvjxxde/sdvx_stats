@@ -40,7 +40,7 @@
   <%# 条件選択/リセットボタン %>
   <div class="uk-flex uk-flex-right">
     <a class="uk-button uk-button-secondary uk-button-small" href="#search-modal-container" uk-toggle>条件選択</a>
-    <%= link_to 'リセット', puc_count_charts_path, class: 'uk-margin-small-left uk-button uk-button-secondary uk-button-small' %>
+    <%= link_to 'リセット', charts_puc_count_path, class: 'uk-margin-small-left uk-button uk-button-secondary uk-button-small' %>
   </div>
 
 
@@ -55,7 +55,7 @@
 <%# 検索モーダル %>
 <div id="search-modal-container" class="uk-modal-container" uk-modal>
   <div class="uk-modal-dialog">
-    <%= search_form_for @q, url: puc_count_charts_path do |f| %>
+    <%= search_form_for @q, url: charts_puc_count_path do |f| %>
       <div class="uk-modal-body">
         <button class="uk-modal-close-default" type="button" uk-close></button>
 

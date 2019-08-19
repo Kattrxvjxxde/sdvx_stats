@@ -19,4 +19,8 @@ input[type="button"] {
   background: -webkit-linear-gradient(90deg, rgb(30, 103, 255), rgb(131, 177, 255));
   background: linear-gradient(90deg, rgb(30, 103, 255), rgb(131, 177, 255));
   color: #fff;
+
+  &__icon {
+    max-width: 36px;
+  }
 }

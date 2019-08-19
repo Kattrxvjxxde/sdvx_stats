@@ -1,0 +1,31 @@
+<%# テーブル表示部 %>
+<table class="uk-table uk-table-small uk-table-middle uk-table-divider uk-table-hover">
+  <thead>
+    <tr>
+      <th class="uk-width-1-6 uk-text-center">
+        <%= t('.rank') %>
+      </th>
+      <th class="uk-width-auto">
+        <%= t('.player_name') %>
+      </th>
+      <th class="uk-width-1-4 uk-text-center">
+        <%= t('.volforce') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @volforce_rank_pages.each do |rank| %>
+      <tr>
+        <td class="uk-text-center">
+          <%= @volforce_ranks_arr.index(rank) %>
+        </td>
+        <td>
+          <%= rank[0] %>
+        </td>
+        <td class="uk-text-center">
+          <%= sprintf('%.2f', rank[1] / 100.0) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

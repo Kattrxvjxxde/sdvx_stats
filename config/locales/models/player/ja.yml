@@ -1,0 +1,35 @@
+ja:
+  activerecord:
+    models:
+      player: プレイヤー
+    attributes:
+      player:
+        status: ステータス
+        rival_id: ライバルID
+        name: プレイヤー名
+        volforce: ボルフォース
+        puc_diff_nov: PUC数(NOV)
+        puc_diff_adv: PUC数(ADV)
+        puc_diff_exh: PUC数(EXH)
+        puc_diff_mxm: PUC数(MXM)
+        puc_diff_fx: PUC数(その他)
+        puc_lx_1: PUC数(Lv01)
+        puc_lx_2: PUC数(Lv02)
+        puc_lx_3: PUC数(Lv03)
+        puc_lx_4: PUC数(Lv04)
+        puc_lx_5: PUC数(Lv05)
+        puc_lx_6: PUC数(Lv06)
+        puc_lx_7: PUC数(Lv07)
+        puc_lx_8: PUC数(Lv08)
+        puc_lx_9: PUC数(Lv09)
+        puc_lx_10: PUC数(Lv10)
+        puc_lx_11: PUC数(Lv11)
+        puc_lx_12: PUC数(Lv12)
+        puc_lx_13: PUC数(Lv13)
+        puc_lx_14: PUC数(Lv14)
+        puc_lx_15: PUC数(Lv15)
+        puc_lx_16: PUC数(Lv16)
+        puc_lx_17: PUC数(Lv17)
+        puc_lx_18: PUC数(Lv18)
+        puc_lx_19: PUC数(Lv19)
+        puc_lx_20: PUC数(Lv20)
